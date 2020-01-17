@@ -4,8 +4,11 @@
   "description": "Backend app for the BROTHel Burning Man camp eco system.",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "watch": "nodemon server.js",
+    "lint": "standard",
+    "fix": "standard --fix",
+    "test": "standard && cross-env NODE_ENV=test mocha -u tdd --reporter spec --exit"
   },
   "repository": {
     "type": "git",
@@ -16,5 +19,15 @@
   "bugs": {
     "url": "https://github.com/JandyStephens/LateNiteNoodz/issues"
   },
-  "homepage": "https://github.com/JandyStephens/LateNiteNoodz#readme"
+  "homepage": "https://github.com/JandyStephens/LateNiteNoodz#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.3"
+  },
+  "devDependencies": {
+    "standard": "^14.3.1"
+  }
 }
