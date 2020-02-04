@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       unique: true,
       isEmail: true
-    }, 
+    },
     password: {
       type: DataTypes.TEXT,
       allowNull: false
@@ -30,19 +30,18 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     isActive: {
-      type: DataTypes.BOOLEAN  ,
+      type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false,
+      defaultValue: false
     },
     isAdmin: {
-      type: DataTypes.BOOLEAN  ,
+      type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false,
+      defaultValue: false
     }
   });
 
   User.associate = function(models) {
-    
     User.hasMany(models.Payments, {
       onDelete: "cascade"
     });
@@ -52,16 +51,22 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     User.hasMany(models.Years, {
-      onDelete: "cascade"
-    });
-    User.hasMany(models.bookRequest, {
+      //TODO:  Do we call the years table here? i.e.
+      // User.findAll ({
+      //   where {
+      //     years: true,
+      //   }
+      // })
       onDelete: "cascade"
     });
   };
   User.beforeCreate(function(user) {
-    user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null);
+    user.password = bcrypt.hashSync(
+      user.password,
+      bcrypt.genSaltSync(10),
+      null
+    );
   });
-
 
   return User;
 };
