@@ -11,7 +11,18 @@ module.exports = function(sequelize, DataTypes) {
     Photos.associate = function(models) {
       // Associating Author with Posts
       Photos.belongsTo(models.User, {
+          //TODO:  is this where we add the foreign key or call it in the association??
+        foreignKey: {
+            name: 'userId',
+        },
         onDelete: "cascade"
+      });
+      Photos.belongsTo(models.Year, {
+        foreignKey: {
+            name: 'yearId',
+          },
+        onDelete: "cascade"
+        
       });
     };
     return Photos;

@@ -1,6 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
   var Years = sequelize.define("years", {
-    
+      //TODO:  is this needed?
+    foreignKey: {
+        name: 'photoId',
+        autoIncrement:  true,
+      },
     years: {
       type: DataTypes.INTEGER,
       allowNull: true
