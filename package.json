@@ -26,7 +26,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "mysql2": "^2.1.0",
-    "sequelize": "^5.21.3"
+    "sequelize": "^6.29.0"
   },
   "devDependencies": {
     "standard": "^14.3.1"
